@@ -1,0 +1,29 @@
+.image-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.image-upload-label {
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-borde);
+    width: 270px;
+    height: 270px;
+    cursor: pointer;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.input-file{
+    display: none;
+}
