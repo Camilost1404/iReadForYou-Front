@@ -4,13 +4,13 @@ import '../../assets/css/PreLoader.css'
 function PreLoader() {
     return (
         <div className="container-loader">
-            <div class="text">
+            <div className="text">
                 <h3>Procesando Imagen...</h3>
             </div>
 
-            <div class="loader">
-                <div class="load-box">
-                    <div class="load"></div>
+            <div className="loader">
+                <div className="load-box">
+                    <div className="load"></div>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ function UploadButton(props) {
             );
             console.log(response);
             setImagen(null)
-            navigate.push({
+            navigate({
                 pathname: '/listen_audio',
                 state: { audio, texto }
             });
@@ -35,9 +35,14 @@ function UploadButton(props) {
             setIsLoading(false);
         }*/
 
+        let audioUrl = 'hola'
+        let texto='hola'
+
         setTimeout(() => {
             setIsLoading(false);
-            // navigate('/escuchar_audio');
+            navigate('/listen_audio', {
+                state: { audioUrl, texto },
+            });
         }, 5000); // Espera 3 segundos antes de finalizar la carga y redirigir
 
     };

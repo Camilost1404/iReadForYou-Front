@@ -32,32 +32,36 @@ function Imagen() {
     }
 
     return (
-        <div className="image-upload-container">
-            <label
-                htmlFor="image-upload-input"
-                className="image-upload-label"
-                tabIndex="0"
-                onKeyDown={handleLabelKeyDown}
-            >
-                {imagen ? (
-                    <img src={imagen} alt="Imagen" className="image-preview" />
-                ) : (
-                    <span className="file-input-text">Selecciona una imagen</span>
-                )}
-            </label>
-            <input
-                id="image-upload-input"
-                type="file"
-                accept="image/*"
-                onChange={seleccionarImagen}
-                className='input-file'
-            />
+        <div className="row">
+            <div className='col d-flex align-items-center justify-content-center'>
+                <label
+                    htmlFor="image-upload-input"
+                    className="image-upload-label"
+                    tabIndex="0"
+                    onKeyDown={handleLabelKeyDown}
+                >
+                    {imagen ? (
+                        <img src={imagen} alt="Imagen" className="image-preview" />
+                    ) : (
+                        <span className="file-input-text">Selecciona una imagen</span>
+                    )}
+                </label>
+                <input
+                    id="image-upload-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={seleccionarImagen}
+                    className='input-file'
+                />
+            </div>
             {imagen && (
-                <div className="botones-container">
-                    <UploadButton imagen={imagen} />
-                    <button className='boton btn-cancelar' onClick={cancelarImagen}>Cancelar</button>
-                </div>
+                <div className='col'>
+                    <div className="botones-container d-flex justify-content-center">
+                        <UploadButton imagen={imagen} />
+                        <button className='boton btn-cancelar' onClick={cancelarImagen}>Cancelar</button>
+                    </div>
 
+                </div>
             )}
         </div>
     );

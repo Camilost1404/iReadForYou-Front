@@ -3,9 +3,9 @@
   /* blanco */
   --color-texto: #222222;
   /* negro */
-  --color-boton: #0080FF;
+  --color-principal: #0080FF;
   /* azul */
-  --color-boton-hover: #0040FF;
+  --color-principal-hover: #0040FF;
   /* azul oscuro */
   --color-secundario: #00FF80;
   /* verde */
@@ -27,6 +27,10 @@
   /* gris claro */
   --color-texto-resaltado: #00FF80;
   /* verde */
+}
+
+html, body, #root {
+  height: 100%;
 }
 
 body {

@@ -8,13 +8,14 @@ import '../../assets/css/Home.css'
 function Home() {
 
     return (
-        <div className="home">
-            <div className='title-container'>
-                <h1 className='titulo'>I Read For You</h1>
-            </div>
-            <div className="buttons">
-                <Camara />
-                <Imagen />
+        <div className="container">
+            <div className="row row-gap-5">
+                <div className="col-md-6">
+                    <Camara />
+                </div>
+                <div className="col-md-6">
+                    <Imagen />
+                </div>
             </div>
         </div>
     );

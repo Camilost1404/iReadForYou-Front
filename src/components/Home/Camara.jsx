@@ -37,30 +37,30 @@ function Camara() {
     }
 
     return (
-        <div className='container'>
+        <div className='row'>
             {(!cameraOn && !imagen) && (
-                <div className='camara-container'>
+                <div className="col d-flex align-items-center justify-content-center">
                     <img className='camara-button' src={imagenCamara} alt="Imagen Cámara" onClick={encenderCamara} />
                 </div>
             )}
             {cameraOn && (
-                <div className='camara-container'>
-                    <Webcam
-                        audio={false}
-                        ref={webcamRef}
-                        screenshotFormat="image/jpeg"
-                        className="webcam"
-                    />
-                    <div className="botones-container">
-                        <button className='boton btn-action' onClick={tomarFoto}>Tomar Foto</button>
-                        <button className='boton btn-cancelar' onClick={apagarCamara}>Cancelar</button>
-                    </div>
+                <div className="col">
+                        <Webcam
+                            audio={false}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            className="webcam"
+                        />
+                        <div className='botones-container d-flex justify-content-center'>
+                            <button className='boton btn-action' onClick={tomarFoto}>Tomar Foto</button>
+                            <button className='boton btn-cancelar' onClick={apagarCamara}>Cancelar</button>
+                        </div>
                 </div>
             )}
             {imagen && (
-                <div className='camara-container'>
+                <div className='col'>
                     <img src={imagen} alt="Foto" />
-                    <div className="botones-container">
+                    <div className="botones-container d-flex justify-content-center flex-wrap">
                         <button className='boton btn-action' onClick={tomarDeNuevo}>Tomar Nuevamente</button>
                         <UploadButton imagen={imagen} />
                         <button className='boton btn-cancelar' onClick={cancelarFoto}>Cancelar</button>
