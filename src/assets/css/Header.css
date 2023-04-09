@@ -1,0 +1,34 @@
+.navbar {
+    background-color: var(--color-principal);
+}
+
+.navbar-brand {
+    /* background-color: var(--color-fondo); */
+    font-size: 25px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.navbar-nav {
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.navbar-toggler {
+    background-color: var(--color-secundario);
+    color: var(--color-secundario-hover);
+}
+
+.btn-inicio {
+    background-color: var(--color-secundario);
+}
+
+.btn-inicio:hover {
+    background-color: var(--color-secundario-hover);
+}
+
+.btn:active {
+    color: var(--bs-btn-active-color) !important;
+    background-color: var(--color-secundario-hover) !important;
+    border-color: var(--color-borde) !important;
+}
