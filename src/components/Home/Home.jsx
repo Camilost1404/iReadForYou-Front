@@ -8,15 +8,9 @@ import '../../assets/css/Home.css'
 function Home() {
 
     return (
-        <div className="container">
-            <div className="row row-gap-5">
-                <div className="col-md-6">
-                    <Camara />
-                </div>
-                <div className="col-md-6">
-                    <Imagen />
-                </div>
-            </div>
+        <div className="row align-items-center justify-content-center pt-4 pb-4 h-100">
+            <Camara />
+            <Imagen />
         </div>
     );
 }

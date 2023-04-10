@@ -37,14 +37,14 @@ function Camara() {
     }
 
     return (
-        <div className='row'>
+        <div className="col-lg-6">
             {(!cameraOn && !imagen) && (
-                <div className="col d-flex align-items-center justify-content-center">
+                <div className="row align-items-center justify-content-center">
                     <img className='camara-button' src={imagenCamara} alt="Imagen Cámara" onClick={encenderCamara} />
                 </div>
             )}
             {cameraOn && (
-                <div className="col">
+                <div className="row align-items-center justify-content-center">
                         <Webcam
                             audio={false}
                             ref={webcamRef}
@@ -58,8 +58,8 @@ function Camara() {
                 </div>
             )}
             {imagen && (
-                <div className='col'>
-                    <img src={imagen} alt="Foto" />
+                <div className='row align-items-center justify-content-center'>
+                    <img src={imagen} alt="Foto" className="webcam" />
                     <div className="botones-container d-flex justify-content-center flex-wrap">
                         <button className='boton btn-action' onClick={tomarDeNuevo}>Tomar Nuevamente</button>
                         <UploadButton imagen={imagen} />

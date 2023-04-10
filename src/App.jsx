@@ -8,14 +8,12 @@ import ListenAudio from './components/EscucharAudio/ListenAudio.jsx';
 function App() {
   return (
     <BrowserRouter>
-      <div className="d-flex flex-column h-100">
-        <Header />
-        <div className="d-flex align-items-center justify-content-center h-100">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/listen_audio" element={<ListenAudio />} />
-          </Routes>
-        </div>
+      <Header />
+      <div className="container-fluid h-100">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/listen_audio" element={<ListenAudio />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

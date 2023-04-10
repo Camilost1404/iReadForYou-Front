@@ -9,12 +9,12 @@
 .image-upload-label {
     display: flex;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: bold;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--color-borde);
-    width: 270px;
-    height: 270px;
+    border: 10px dashed var(--color-borde);
+    width: 350px;
+    height: 326px;
     cursor: pointer;
 }
 
@@ -26,4 +26,11 @@
 
 .input-file{
     display: none;
+}
+
+@media (max-width: 576px) {
+    .image-upload-label {
+        width: 300px;
+        height: 276px;
+    }
 }

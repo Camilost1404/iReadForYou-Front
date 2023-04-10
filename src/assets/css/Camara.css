@@ -7,11 +7,18 @@
 }
 
 .camara-button {
-    width: 270px;
+    width: 350px;
     cursor: pointer;
 }
 
 .webcam {
     max-width: 100%;
     height: auto;
+}
+
+@media (max-width: 576px) {
+    .camara-button {
+        width: 300px;
+        cursor: pointer;
+    }
 }
