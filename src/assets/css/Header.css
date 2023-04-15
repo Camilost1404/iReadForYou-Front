@@ -1,9 +1,10 @@
 .navbar {
-    background-color: var(--color-principal);
+    background-color: var(--header-color);
 }
 
 .navbar-brand {
     /* background-color: var(--color-fondo); */
+    font-weight: 600;
     font-size: 25px;
     padding-right: 10px;
     border-radius: 10px;

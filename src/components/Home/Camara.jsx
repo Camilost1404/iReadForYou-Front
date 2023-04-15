@@ -37,7 +37,7 @@ function Camara() {
     }
 
     return (
-        <div className="col-lg-6">
+        <div className="col-lg">
             {(!cameraOn && !imagen) && (
                 <div className="row align-items-center justify-content-center">
                     <img className='camara-button' src={imagenCamara} alt="Imagen Cámara" onClick={encenderCamara} />

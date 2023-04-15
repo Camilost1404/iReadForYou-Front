@@ -14,36 +14,44 @@ function UploadButton(props) {
         console.log(props.imagen)
         setIsLoading(true);
 
-        /* const formData = new FormData();
-        formData.append("image_data", props.imagen);
+        const formData = new FormData();
+        const imagen = props.imagen.split(',')[1];
+
+        formData.append("image_data", imagen);
 
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_DJANGO_URL}/procesar_imagen`,
                 formData
             );
+
+            const { audio_url, texto } = response.data;
+
             console.log(response);
-            setImagen(null)
-            navigate({
-                pathname: '/listen_audio',
-                state: { audio, texto }
+            console.log(audio_url);
+            console.log(texto)
+
+            setIsLoading(false);
+
+            navigate('/listen_audio', {
+                state: { audio_url, texto },
             });
+
         } catch (error) {
             console.log(error);
             alert("Error al subir el archivo");
-        } finally {
             setIsLoading(false);
-        }*/
+        }
 
-        let audioUrl = 'hola'
-        let texto='hola'
+        // let audioUrl = 'hola'
+        // let texto='hola'
 
-        setTimeout(() => {
+        /* setTimeout(() => {
             setIsLoading(false);
             navigate('/listen_audio', {
                 state: { audioUrl, texto },
             });
-        }, 5000); // Espera 3 segundos antes de finalizar la carga y redirigir
+        }, 5000); // Espera 3 segundos antes de finalizar la carga y redirigir */
 
     };
 

@@ -8,7 +8,7 @@ import '../../assets/css/Home.css'
 function Home() {
 
     return (
-        <div className="row align-items-center justify-content-center pt-4 pb-4 h-100">
+        <div className="row align-items-center justify-content-center pt-4 pb-4 px-2 h-100 gap-4">
             <Camara />
             <Imagen />
         </div>

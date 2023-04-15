@@ -20,10 +20,12 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link className="btn btn-inicio" to="/login">Iniciar sesión</Link>
+                            {/* <Link className="btn btn-inicio" to="/login">Iniciar sesión</Link> */}
+                            <button className="btn btn-inicio">Iniciar sesión</button>
                         </li>
                         <li className="nav-item">
-                            <Link className="btn btn-inicio" to="/register">Registro</Link>
+                            {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
+                            <button className="btn btn-inicio">Registro</button>
                         </li>
                     </ul>
                 </div>

@@ -32,7 +32,7 @@ function Imagen() {
     }
 
     return (
-        <div className="col-lg-6 col">
+        <div className="col-lg">
             <div className='col d-flex align-items-center justify-content-center'>
                 <label
                     htmlFor="image-upload-input"
