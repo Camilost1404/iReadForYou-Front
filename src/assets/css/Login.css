@@ -1,0 +1,113 @@
+.contentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contentWrapper .container {
+    background: #fff;
+    color: black;
+    padding: 3rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contentWrapper form {
+    display: flex;
+    flex-direction: column;
+    width: 28rem;
+}
+
+.form-container {
+    border: 1px solid black;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.contentWrapper input {
+    margin: .5rem 0;
+    color: #322D39;
+    outline: none;
+    padding: 1.5rem 1rem;
+    border: solid 1px #322D39;
+}
+
+.contentWrapper input:focus {
+    border-color: var(--color-secundario-hover);
+}
+
+.contentWrapper button {
+    padding: 1rem;
+    color: #000;
+    background: var(--color-principal);
+    border: none;
+    cursor: pointer;
+    transition: background .7s;
+}
+
+.contentWrapper button:hover {
+    background: var(--color-principal-hover);
+}
+
+.contentWrapper .__container {
+    text-align: center;
+}
+
+.contentWrapper .__container a {
+    display: inline-block;
+    color: var(--header-color);
+    margin: 1rem 0;
+    text-decoration: none;
+}
+
+.contentWrapper .__container a:hover {
+    text-decoration: underline;
+}
+
+/* Boton */
+
+.frame {
+    width: 100%;
+    text-align: center;
+}
+
+.custom-bttn {
+    width: 180px;
+    color: #000;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.bttn {
+    border: none;
+    color: #000;
+}
+
+
+.bttn:hover {
+    color: #000;
+}
+
+.bttn:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.bttn:active {
+    top: 2px;
+}

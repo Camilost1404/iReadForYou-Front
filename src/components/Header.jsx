@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from '../assets/images/logo.png'
 import '../assets/css/Header.css'
 
+
 function Header() {
     return (
         <nav className="navbar navbar-expand-lg">
@@ -20,12 +21,12 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            {/* <Link className="btn btn-inicio" to="/login">Iniciar sesión</Link> */}
-                            <button className="btn btn-inicio">Iniciar sesión</button>
+                            <Link className="bttn-press btn btn-inicio" to="login">Iniciar sesión</Link>
+                            {/* <button className="btn btn-inicio">Iniciar sesión</button> */}
                         </li>
                         <li className="nav-item">
                             {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
-                            <button className="btn btn-inicio">Registro</button>
+                            <button className="bttn-press btn btn-inicio">Registro</button>
                         </li>
                     </ul>
                 </div>
