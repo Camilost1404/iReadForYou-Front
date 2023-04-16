@@ -89,6 +89,12 @@
 
 /* Volumen */
 
+.audio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .audio-volume {
     display: flex;
     align-items: center;
@@ -135,4 +141,40 @@
     height: 10px;
     border-radius: 5px;
     background-color: var(--color-texto);
+}
+
+.tonalidad-button {
+    background-color: var(--color-fondo);
+    width: 40px;
+    color: var(-color-texto);
+    border: 2px solid var(--color-texto);
+    cursor: pointer;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.tonalidad-button:disabled{
+    border: none;
+    background: var(--color-barra-progreso);
+    cursor: auto;
+}
+
+.tonalidad-button:hover {
+    border: none;
+    background: var(--color-barra-progreso);
+}
+
+.tonalidad-button:active {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
+        -4px -4px 6px 0 rgba(116, 125, 136, .2),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.tonalidad-text {
+    font-size: 18px;
+    color: var(--color-texto);
+    margin-right: 10px;
+    margin-left: 10px;
 }

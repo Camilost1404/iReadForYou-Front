@@ -29,7 +29,7 @@ function ListenAudio(props) {
                 <p>{texto}</p>
             </div>
             <div className="row align-items-center justify-content-center audio-container">
-                {audioUrl && (<Audio src={`${process.env.REACT_APP_DJANGO_URL}/${audioUrl}`} />)}
+                {audioUrl && (<Audio src={`${audioUrl}`} />)}
             </div>
         </div>
     );

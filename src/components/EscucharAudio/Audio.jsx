@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
 import '../../assets/css/Audio.css'
 
 function Audio(props) {
     const audioRef = useRef(null);
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [tonalidad, setTonalidad] = useState(0);
 
     const handlePlayPause = () => {
         if (isPlaying) {
@@ -60,6 +63,62 @@ function Audio(props) {
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 
+    const subirTonalidad = async () => {
+
+        const nuevaTonalidad = tonalidad + 1;
+
+        const formData = new FormData();
+
+        const nombre_audio = props.src.split('/')[3]
+
+        formData.append("data_audio", nombre_audio);
+        formData.append("tono", 'grave');
+
+        // console.log(formData)
+
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_DJANGO_URL}/cambiar_tono`,
+                formData
+            );
+            console.log(response);
+            setTonalidad(nuevaTonalidad);
+
+        } catch (error) {
+            console.log(error);
+            alert("Error al subir el archivo");
+        }
+
+    }
+
+    const bajarTonalidad = async () => {
+
+        const nuevaTonalidad = tonalidad - 1;
+
+        const formData = new FormData();
+
+        const nombre_audio = props.src.split('/')[3]
+
+        formData.append("data_audio", nombre_audio);
+        formData.append("tono", 'agudo');
+
+        // console.log(formData)
+
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_DJANGO_URL}/cambiar_tono`,
+                formData
+            );
+            setTonalidad(nuevaTonalidad);
+            console.log(response);
+
+        } catch (error) {
+            console.log(error);
+            alert(error);
+        }
+
+    }
+
     return (
         <div className="audio-player">
             <div className="audio-progress">
@@ -99,33 +158,55 @@ function Audio(props) {
                     <i className="fa-solid fa-forward"></i>
                 </button>
             </div>
-            <div className="audio-volume">
-                <button
-                    className="audio-button"
-                    onClick={ActiveVolume}
-                    title={volume === 0 ? "Activar sonido" : "Silenciar"}
-                >
-                    {volume > 0.5 ? (
-                        <i className="fas fa-volume-up"></i>
-                    ) : volume > 0 & volume < 0.5 ? (
-                        <i className="fas fa-volume-down"></i>
-                    ) : (
-                        <i className="fas fa-volume-mute"></i>
-                    )}
-                </button>
-                <input
-                    type="range"
-                    className="audio-volume-bar"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                />
+            <div className="audio">
+                <div className="audio-volume">
+                    <button
+                        className="audio-button"
+                        onClick={ActiveVolume}
+                        title={volume === 0 ? "Activar sonido" : "Silenciar"}
+                    >
+                        {volume > 0.5 ? (
+                            <i className="fas fa-volume-up"></i>
+                        ) : volume > 0 & volume < 0.5 ? (
+                            <i className="fas fa-volume-down"></i>
+                        ) : (
+                            <i className="fas fa-volume-mute"></i>
+                        )}
+                    </button>
+                    <input
+                        type="range"
+                        className="audio-volume-bar"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                    />
+                </div>
+                <div>
+                    <button className="tonalidad-button"
+                        onClick={bajarTonalidad}
+                        disabled={tonalidad === -3}
+                        title='Bajar Tonailidad'
+                        aria-label='Bajar Tonailidad'
+                    >
+                        <i className="fas fa-minus"></i>
+                    </button>
+                    <span className="tonalidad-text">{tonalidad}</span>
+                    <button className="tonalidad-button"
+                        onClick={subirTonalidad}
+                        disabled={tonalidad === 3}
+                        title='Subir Tonailidad'
+                        aria-label='Subir Tonailidad'
+                    >
+                        <i className="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
             <audio
+                key={tonalidad}
                 ref={audioRef}
-                src={props.src}
+                src={`${process.env.REACT_APP_DJANGO_URL}/${props.src}`}
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={() => setIsPlaying(false)}
             >
