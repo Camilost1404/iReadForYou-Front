@@ -24,11 +24,11 @@ function ListenAudio(props) {
     }, [location.state, navigate]);
 
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center pt-4 pb-4 px-2 h-100 gap-4">
-            <div className="text-container">
+        <div className="row align-items-center justify-content-center pt-4 pb-4 px-2 gap-4">
+            <div className="row align-items-center justify-content-center text-container">
                 <p>{texto}</p>
             </div>
-            <div className="audio-container">
+            <div className="row align-items-center justify-content-center audio-container">
                 {audioUrl && (<Audio src={`${process.env.REACT_APP_DJANGO_URL}/${audioUrl}`} />)}
             </div>
         </div>
