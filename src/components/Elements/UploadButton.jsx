@@ -11,7 +11,7 @@ function UploadButton(props) {
 
     const subirImagen = async () => {
 
-        console.log(props.imagen)
+        // console.log(props.imagen)
         setIsLoading(true);
 
         const formData = new FormData();
@@ -25,20 +25,22 @@ function UploadButton(props) {
                 formData
             );
 
+            if (response.data.status === 'error') {
+                setIsLoading(false);
+                return alert(response.data.message)
+            }
+
             const { audio_url, texto } = response.data;
 
-            console.log(response);
-            console.log(audio_url);
-            console.log(texto)
-
-            setIsLoading(false);
+            // console.log(response);
+            // console.log(audio_url);
+            // console.log(texto)
 
             navigate('/listen_audio', {
                 state: { audio_url, texto },
             });
 
         } catch (error) {
-            console.log(error);
             alert("Error al subir el archivo");
             setIsLoading(false);
         }
