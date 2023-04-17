@@ -8,7 +8,6 @@
 .contentWrapper .container {
     background: #fff;
     color: black;
-    padding: 3rem 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +40,7 @@
 
 .form-container {
     border: 1px solid black;
-    padding: 40px;
+    padding: 20px;
     border-radius: 20px;
 }
 
@@ -51,10 +50,11 @@
     outline: none;
     padding: 1.5rem 1rem;
     border: solid 1px #322D39;
+    border-radius: 10px;
 }
 
 .contentWrapper input:focus {
-    border-color: var(--color-secundario-hover);
+    border-color: var(--color-borde);
 }
 
 .contentWrapper button {
@@ -90,6 +90,8 @@
 .frame {
     width: 100%;
     text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .custom-bttn {
@@ -128,4 +130,8 @@
 
 .bttn:active {
     top: 2px;
+}
+
+.error-message {
+    color: red;
 }

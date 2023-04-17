@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import Logo from '../assets/images/logo.png'
 import '../assets/css/Header.css'
 
 
 function Header() {
+
+    const [isAuth, setIsAuth] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('access_token') !== null) {
+            setIsAuth(true);
+        }
+    }, [isAuth]);
+
+    const logOut = async () => {
+
+        try {
+            const { data } = await axios.post(`${process.env.REACT_APP_DJANGO_URL}/logout/`, {
+                refresh_token: localStorage.getItem('refresh_token')
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }, { withCredentials: true });
+
+            console.log('logout', data)
+            localStorage.clear();
+            axios.defaults.headers.common['Authorization'] = null;
+            window.location.href = '/'
+        } catch (e) {
+            console.log('logout not working')
+        }
+
+    };
+
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container">
@@ -19,19 +50,28 @@ function Header() {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <Link className="bttn-press btn btn-inicio" to="login">Iniciar sesión</Link>
-                            {/* <button className="btn btn-inicio">Iniciar sesión</button> */}
-                        </li>
-                        <li className="nav-item">
-                            {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
-                            <button className="bttn-press btn btn-inicio">Registro</button>
-                        </li>
-                    </ul>
+                    {!isAuth ?
+                        <ul className="navbar-nav ms-auto">
+                            <li className="nav-item">
+                                <Link className="bttn-press btn btn-inicio" to="login">Iniciar sesión</Link>
+                                {/* <button className="btn btn-inicio">Iniciar sesión</button> */}
+                            </li>
+                            <li className="nav-item">
+                                {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
+                                <button className="bttn-press btn btn-inicio">Registro</button>
+                            </li>
+                        </ul>
+                        :
+                        <ul className="navbar-nav ms-auto">
+                            <li className="nav-item">
+                                {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
+                                <button className="bttn-press btn btn-inicio" onClick={logOut}>Logout</button>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 }
 
