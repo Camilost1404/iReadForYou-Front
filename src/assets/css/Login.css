@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .contentWrapper .container {
@@ -12,7 +12,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
+}
+
+.grupo-input {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.grupo-input input {
+    width: 80%;
+}
+
+.btn-micro {
+    border-radius: 30px;
+    width: 15%;
 }
 
 .contentWrapper form {
