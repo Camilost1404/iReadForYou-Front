@@ -8,13 +8,42 @@ import '../assets/css/Header.css'
 
 function Header() {
 
+    const [email, setEmail] = useState('')
     const [isAuth, setIsAuth] = useState(false);
+
+    useEffect(() => {
+
+        if (isAuth) {
+
+            axios.get(`${process.env.REACT_APP_DJANGO_URL}/user/`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                }
+            }, { withCredentials: true })
+                .then(response => {
+
+                    let user = response.data.user[0]
+
+                    setEmail(user.email)
+
+                })
+                .catch(error => {
+                    console.log(error)
+                    setIsAuth(false);
+                });
+
+        }
+
+    }, [isAuth])
 
     useEffect(() => {
         if (localStorage.getItem('access_token') !== null) {
             setIsAuth(true);
         }
     }, [isAuth]);
+
+
 
     const logOut = async () => {
 
@@ -24,12 +53,12 @@ function Header() {
             }, {
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                 }
             }, { withCredentials: true });
 
             console.log('logout', data)
             localStorage.clear();
-            axios.defaults.headers.common['Authorization'] = null;
             window.location.href = '/'
         } catch (e) {
             console.log('logout not working')
@@ -62,7 +91,10 @@ function Header() {
                             </li>
                         </ul>
                         :
-                        <ul className="navbar-nav ms-auto">
+                        <ul className="navbar-nav ms-auto" style={{ gap: "25px" }}>
+                            <li className="nav-item welcome-message">
+                                <p className="bienvenida"><strong>Bienvenido,</strong> {email}</p>
+                            </li>
                             <li className="nav-item">
                                 {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
                                 <button className="bttn-press btn btn-inicio" onClick={logOut}>Logout</button>

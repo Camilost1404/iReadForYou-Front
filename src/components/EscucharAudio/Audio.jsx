@@ -12,6 +12,8 @@ function Audio(props) {
     const [duration, setDuration] = useState(0);
     const [tonalidad, setTonalidad] = useState(0);
 
+    const [disabled, setDisabled] = useState(false);
+
     const handlePlayPause = () => {
         if (isPlaying) {
             audioRef.current.pause();
@@ -71,6 +73,8 @@ function Audio(props) {
 
         const nombre_audio = props.src.split('/')[3]
 
+        setDisabled(true);
+
         formData.append("data_audio", nombre_audio);
         formData.append("tono", 'grave');
 
@@ -81,12 +85,17 @@ function Audio(props) {
                 `${process.env.REACT_APP_DJANGO_URL}/cambiar_tono`,
                 formData
             );
-            console.log(response);
             setTonalidad(nuevaTonalidad);
+            console.log(response);
+
+            setDisabled(true);
+            setTimeout(() => {
+                setDisabled(false);
+            }, 800);
 
         } catch (error) {
             console.log(error);
-            alert("Error al subir el archivo");
+            alert("Error al cambiar tonalidad");
         }
 
     }
@@ -99,6 +108,8 @@ function Audio(props) {
 
         const nombre_audio = props.src.split('/')[3]
 
+        setDisabled(true);
+
         formData.append("data_audio", nombre_audio);
         formData.append("tono", 'agudo');
 
@@ -109,6 +120,12 @@ function Audio(props) {
                 `${process.env.REACT_APP_DJANGO_URL}/cambiar_tono`,
                 formData
             );
+
+            setDisabled(true);
+            setTimeout(() => {
+                setDisabled(false);
+            }, 800);
+
             setTonalidad(nuevaTonalidad);
             console.log(response);
 
@@ -186,7 +203,7 @@ function Audio(props) {
                 <div>
                     <button className="tonalidad-button"
                         onClick={bajarTonalidad}
-                        disabled={tonalidad === -3}
+                        disabled={tonalidad === -3 || disabled}
                         title='Bajar Tonailidad'
                         aria-label='Bajar Tonailidad'
                     >
@@ -195,7 +212,7 @@ function Audio(props) {
                     <span className="tonalidad-text">{tonalidad}</span>
                     <button className="tonalidad-button"
                         onClick={subirTonalidad}
-                        disabled={tonalidad === 3}
+                        disabled={tonalidad === 3 || disabled}
                         title='Subir Tonailidad'
                         aria-label='Subir Tonailidad'
                     >
@@ -206,7 +223,7 @@ function Audio(props) {
             <audio
                 key={tonalidad}
                 ref={audioRef}
-                src={`${process.env.REACT_APP_DJANGO_URL}/${props.src}`}
+                src={`${process.env.REACT_APP_DJANGO_URL}${props.src}`}
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={() => setIsPlaying(false)}
             >

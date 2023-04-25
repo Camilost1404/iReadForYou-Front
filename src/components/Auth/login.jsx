@@ -13,19 +13,17 @@ function Login() {
 
   useEffect(() => {
     if (transcript) {
-      setEmail(transcript);
+      setEmail(transcript.toLowerCase());
     }
   }, [transcript]);
 
   const handleSpeechRecognition = () => {
 
     if (listening) {
-      // console.log('first')
       SpeechRecognition.stopListening()
       resetTranscript()
     }
     else {
-      // console.log('first2')
       resetTranscript()
       SpeechRecognition.startListening({ language: 'es-MX' })
     }
@@ -63,27 +61,33 @@ function Login() {
 
     }
 
-    console.log(Object.keys(errors).length)
-
     if (email && password) {
 
-      console.log('hola')
       const user = {
         email: email,
         password: password,
       };
 
-      const { data } = await axios.post(`${process.env.REACT_APP_DJANGO_URL}/token/`, user, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }, { withCredentials: true });
+      try {
 
-      localStorage.clear();
-      localStorage.setItem('access_token', data.access);
-      localStorage.setItem('refresh_token', data.refresh);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
-      window.location.href = '/'
+        const { data } = await axios.post(`${process.env.REACT_APP_DJANGO_URL}/token/`, user, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }, { withCredentials: true });
+        localStorage.clear();
+        localStorage.setItem('access_token', data.access);
+        localStorage.setItem('refresh_token', data.refresh);
+        window.location.href = '/'
+
+      } catch (error) {
+
+        setErrors(prevState => ({ ...prevState, globalError: 'El correo electrónico o contraseña incorrectos' }));
+        setEmail('')
+        setPassword('')
+
+      }
+
     }
 
   }
@@ -107,6 +111,7 @@ function Login() {
             </button> */}
           </div>
           {errors.password && <p className="error-message">{errors.password}</p>}
+          {errors.globalError && <p className="error-message">{errors.globalError}</p>}
           <div className='frame'>
             <button className='custom-bttn bttn' type="submit"><span>Acceder</span></button>
           </div>

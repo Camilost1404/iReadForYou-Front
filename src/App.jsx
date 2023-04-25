@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from "./components/Auth/Login";
 
 import Header from './components/Header.jsx'
 import Home from './components/Home/Home.jsx';
 import ListenAudio from './components/EscucharAudio/ListenAudio.jsx';
+import Login from './components/Auth/Login.jsx';
 
 function App() {
   return (
