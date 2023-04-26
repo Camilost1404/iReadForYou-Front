@@ -25,8 +25,8 @@ function Header() {
                             {/* <button className="btn btn-inicio">Iniciar sesión</button> */}
                         </li>
                         <li className="nav-item">
-                            {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
-                            <button className="bttn-press btn btn-inicio">Registro</button>
+                            <Link className="bttn-press btn btn-inicio" to="/register">Registro</Link>
+                            {/* <button className="bttn-press btn btn-inicio">Registro</button> */}
                         </li>
                     </ul>
                 </div>
