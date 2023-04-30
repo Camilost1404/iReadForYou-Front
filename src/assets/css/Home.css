@@ -18,6 +18,13 @@
     border: none;
 }
 
+.guardar {
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-texto);
+}
+
 .btn-action {
     background-color: var(--color-principal);
 }

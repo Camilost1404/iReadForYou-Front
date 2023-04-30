@@ -97,7 +97,7 @@ function Header() {
                             </li>
                             <li className="nav-item">
                                 {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
-                                <button className="bttn-press btn btn-inicio" onClick={logOut}>Logout</button>
+                                <button className="bttn-press btn btn-inicio" onClick={logOut}>Cerrar Sesión</button>
                             </li>
                         </ul>
                     }

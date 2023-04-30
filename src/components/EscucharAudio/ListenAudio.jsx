@@ -45,8 +45,6 @@ function ListenAudio(props) {
 
                 })
                 .catch(error => {
-                    localStorage.removeItem('access_token');
-                    localStorage.removeItem('refresh_token');
                     console.log(error)
                 });
         }
