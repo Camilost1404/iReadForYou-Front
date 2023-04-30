@@ -8,6 +8,7 @@ import Login from './components/Auth/login.jsx';
 import Register from "./components/Auth/register.jsx";
 
 import History from './components/Home/History.jsx';
+import NotFound from './components/NotFound.jsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/history" element={<History />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
