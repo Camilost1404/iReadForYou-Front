@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import "../../assets/css/Login.css"
+import "../../assets/css/Auth.css"
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -117,8 +118,7 @@ function Login() {
           </div>
           <div className="__container">
             <hr />
-            {/* <a href="#">Crear una cuenta</a> */}
-            {/* <Link className="btn btn-inicio" to="/register">Registro</Link> */}
+            <Link to="/register">Crear una cuenta</Link>
           </div>
         </form>
       </div>
