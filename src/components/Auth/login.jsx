@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import "../../assets/css/Auth.css"
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function Login() {
 
@@ -91,6 +91,10 @@ function Login() {
 
     }
 
+  }
+
+  if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
+    return <Navigate to="/" />;
   }
 
   return (

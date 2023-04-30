@@ -18,14 +18,20 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
-    text-align: center;
-  }
+}
 
-  .grupo-input input {
-    width: 100%;
-  }
+
+.input-group-append {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: -1px;
+    margin-right: 0;
+}
+
 .btn-micro {
     border-radius: 30px;
     width: 15%;
@@ -44,6 +50,8 @@
 }
 
 .contentWrapper input {
+    display: block;
+    width: 100%;
     margin: .5rem 0;
     color: #322D39;
     outline: none;
