@@ -7,6 +7,8 @@ import ListenAudio from './components/EscucharAudio/ListenAudio.jsx';
 import Login from './components/Auth/login.jsx';
 import Register from "./components/Auth/register.jsx";
 
+import History from './components/Home/History.jsx';
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,7 @@ function App() {
           <Route exact path="/listen_audio" element={<ListenAudio />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/history" element={<History />} />
         </Routes>
       </div>
     </BrowserRouter>
