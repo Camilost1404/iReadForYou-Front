@@ -98,7 +98,7 @@
 .audio-volume {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    flex-direction: column;
 }
 
 .audio-button {

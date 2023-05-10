@@ -12,6 +12,8 @@ function Audio(props) {
     const [duration, setDuration] = useState(0);
     const [tonalidad, setTonalidad] = useState(0);
 
+    const [audio, setAudio] = useState(props.src)
+
     const [disabled, setDisabled] = useState(false);
 
     const handlePlayPause = () => {
@@ -71,7 +73,7 @@ function Audio(props) {
 
         const formData = new FormData();
 
-        const nombre_audio = props.src.split('/')[3]
+        const nombre_audio = audio.split('/')[3]
 
         setDisabled(true);
 
@@ -85,13 +87,14 @@ function Audio(props) {
                 `${process.env.REACT_APP_DJANGO_URL}/cambiar_tono`,
                 formData
             );
-            setTonalidad(nuevaTonalidad);
-            console.log(response);
 
-            setDisabled(true);
             setTimeout(() => {
                 setDisabled(false);
             }, 800);
+
+            setTonalidad(nuevaTonalidad);
+            setAudio(response.data.audio_url)
+            console.log(response.data)
 
         } catch (error) {
             console.log(error);
@@ -106,7 +109,7 @@ function Audio(props) {
 
         const formData = new FormData();
 
-        const nombre_audio = props.src.split('/')[3]
+        const nombre_audio = audio.split('/')[3]
 
         setDisabled(true);
 
@@ -121,13 +124,14 @@ function Audio(props) {
                 formData
             );
 
-            setDisabled(true);
+            console.log(response.data)
+
             setTimeout(() => {
                 setDisabled(false);
             }, 800);
 
             setTonalidad(nuevaTonalidad);
-            console.log(response);
+            setAudio(response.data.audio_url)
 
         } catch (error) {
             console.log(error);
@@ -177,30 +181,34 @@ function Audio(props) {
             </div>
             <div className="audio">
                 <div className="audio-volume">
-                    <button
-                        className="audio-button"
-                        onClick={ActiveVolume}
-                        title={volume === 0 ? "Activar sonido" : "Silenciar"}
-                    >
-                        {volume > 0.5 ? (
-                            <i className="fas fa-volume-up"></i>
-                        ) : volume > 0 & volume < 0.5 ? (
-                            <i className="fas fa-volume-down"></i>
-                        ) : (
-                            <i className="fas fa-volume-mute"></i>
-                        )}
-                    </button>
-                    <input
-                        type="range"
-                        className="audio-volume-bar"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={handleVolumeChange}
-                    />
+                    <h5 style={{ textAlign: 'center' }}>Volumen</h5>
+                    <div>
+                        <button
+                            className="audio-button"
+                            onClick={ActiveVolume}
+                            title={volume === 0 ? "Activar sonido" : "Silenciar"}
+                        >
+                            {volume > 0.5 ? (
+                                <i className="fas fa-volume-up"></i>
+                            ) : volume > 0 & volume < 0.5 ? (
+                                <i className="fas fa-volume-down"></i>
+                            ) : (
+                                <i className="fas fa-volume-mute"></i>
+                            )}
+                        </button>
+                        <input
+                            type="range"
+                            className="audio-volume-bar"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={volume}
+                            onChange={handleVolumeChange}
+                        />
+                    </div>
                 </div>
                 <div>
+                    <h5 style={{ textAlign: 'center' }}>Tonalidad</h5>
                     <button className="tonalidad-button"
                         onClick={bajarTonalidad}
                         disabled={tonalidad === -3 || disabled}
@@ -223,7 +231,7 @@ function Audio(props) {
             <audio
                 key={tonalidad}
                 ref={audioRef}
-                src={`${process.env.REACT_APP_DJANGO_URL}${props.src}`}
+                src={`${process.env.REACT_APP_DJANGO_URL}${audio}`}
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={() => setIsPlaying(false)}
             >

@@ -63,7 +63,7 @@ function UploadButton(props) {
                 Subir imagen
             </button>
             {isLoading && (
-                <PreLoader />
+                <PreLoader text='Procesando Imagen...' />
             )}
         </>
     );

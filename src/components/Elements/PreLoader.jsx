@@ -1,11 +1,11 @@
 import React from 'react'
 import '../../assets/css/PreLoader.css'
 
-function PreLoader() {
+function PreLoader(props) {
     return (
         <div className="container-loader">
             <div className="text">
-                <h3>Procesando Imagen...</h3>
+                <h3>{props.text}</h3>
             </div>
 
             <div className="loader">

@@ -103,10 +103,7 @@ function Login() {
         <form className='justify-content-center form-container' onSubmit={manejarEnvioFormulario}>
           <h1 className='text-center'>Iniciar sesión</h1>
           <div className="grupo-input">
-            <input type="email" placeholder="Correo electrónico" value={email} onChange={manejarCambioEmail} style={{ width: browserSupportsSpeechRecognition ? '80%' : '100%' }} />
-            <button type="button" className='btn-micro' onClick={handleSpeechRecognition} style={{ display: browserSupportsSpeechRecognition ? 'block' : 'none' }}>
-              {listening ? <i className="fas fa-microphone"></i> : <i className="fa-solid fa-microphone-slash"></i>}
-            </button>
+            <input type="email" placeholder="Correo electrónico" value={email} onChange={manejarCambioEmail} />
           </div>
           {errors.email && <p className="error-message">{errors.email}</p>}
           <div className="grupo-input">
